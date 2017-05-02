@@ -1,5 +1,7 @@
 # Grunt Email Design Workflow
 
+Edited from Lee Munroe's workflow specifically for WePlann.com's html newsletter creation.
+
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) 
 
 Designing and testing emails is a pain. HTML tables, inline CSS, various devices and clients to test, and varying support for the latest web standards.
@@ -35,7 +37,7 @@ If you haven't used [Grunt](http://gruntjs.com/) before check out Chris Coyier's
 Clone this repo, cd to the directory, run `npm install` to install the necessary packages.
 
 ```sh
-git clone https://github.com/leemunroe/grunt-email-workflow.git
+git clone https://github.com/andersan/weplann-grunt-email-workflow.git
 cd grunt-email-workflow
 npm install
 ```
