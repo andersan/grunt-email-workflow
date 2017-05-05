@@ -1,9 +1,15 @@
+// Require lossy compressors
+
+var pngquant       = require('imagemin-pngquant');
+var jpegrecompress = require('imagemin-jpeg-recompress');
+
 // Compress images
 module.exports = {
   dynamic: {
     options: {
-      optimizationLevel: 3,
-      svgoPlugins: [{ removeViewBox: false }]
+      optimizationLevel: 7,
+      svgoPlugins: [{ removeViewBox: false }],
+      use: [pngquant(), jpegrecompress()]
     },
     
     files: [{
