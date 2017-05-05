@@ -7,3 +7,5 @@ secrets.json
 dist/*
 preview/css
 src/css/*.css
+src/img/*
+src/emails/*
