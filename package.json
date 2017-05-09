@@ -35,6 +35,6 @@
   "dependencies": {
     "imagemin-giflossy": "^5.1.10",
     "imagemin-jpeg-recompress": "^4.3.0",
-    "imagemin-pngquant": "^4.0.0"
+    "imagemin-pngquant": "^4.2.2"
   }
 }
