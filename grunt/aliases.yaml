@@ -1,29 +1,32 @@
 # Where we tell Grunt what to do when we type "grunt" into the terminal
 # $ grunt
 default:
-  - 'clean'
   - 'sass:dist'
   - 'assemble'
   - 'juice'
+
+# Compress images
+# $ grunt min
+min:
   - 'imagemin'
   - 'replace:src_images'
+
+# Clear modified files directory (dist)
+# $ grunt clean
+clean: 
+  - 'clean'
 
 # Use grunt send if you want to actually send the email to your inbox
 # $ grunt send --template=transaction.html
 send:
   - 'mailgun'
 
-# Upload images to your CDN on Rackspace Cloud Files
-# $ grunt rsupload
-rsupload:
-  - 'default'
-  - 'cloudfiles'
-  - 'cdn:cloudfiles'
-
 # Upload image files to Amazon S3
 # $ grunt s3upload
 s3upload:
   - 'default'
+  - 'imagemin'
+  - 'replace:src_images'
   - 'aws_s3:prod'
   - 'cdn:aws_s3'
 
@@ -36,3 +39,10 @@ serve:
   - 'express'
   - 'open'
   - 'watch'
+
+# Upload images to your CDN on Rackspace Cloud Files
+# $ grunt rsupload
+rsupload:
+  - 'default'
+  - 'cloudfiles'
+  - 'cdn:cloudfiles'
