@@ -7,7 +7,20 @@ var jpegrecompress = require('imagemin-jpeg-recompress');
 module.exports = {
   dynamic: {
     options: {
-      optimizationLevel: 1,
+      optimizationLevel: 3,
+      svgoPlugins: [{ removeViewBox: false }],
+    },
+    
+    files: [{
+      expand: true,
+      cwd: '<%= paths.src_img %>',
+      src: ['**/*.{png,jpg,gif}'],
+      dest: '<%= paths.dist_img %>'
+    }]
+  },
+  lossy: {
+    options: {
+      optimizationLevel: 3,
       svgoPlugins: [{ removeViewBox: false }],
       use: [pngquant(), jpegrecompress()]
     },
