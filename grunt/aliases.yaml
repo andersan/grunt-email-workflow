@@ -8,7 +8,7 @@ default:
 # Compress images
 # $ grunt min
 min:
-  - 'imagemin'
+  - 'tinify'
   - 'replace:src_images'
 
 # Clear modified files directory (dist)
@@ -26,7 +26,7 @@ send:
 s3upload:
   - 'default'
   - 'imagemin'
-  - 'replace:src_images'
+  - 'replace:s3_images'
   - 'aws_s3:prod'
   - 'cdn:aws_s3'
 
