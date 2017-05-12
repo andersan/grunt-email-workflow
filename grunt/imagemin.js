@@ -5,7 +5,7 @@ var jpegrecompress = require('imagemin-jpeg-recompress');
 
 // Compress images
 module.exports = {
-  dynamic: {
+  lossless: {
     options: {
       optimizationLevel: 3,
       svgoPlugins: [{ removeViewBox: false }],
