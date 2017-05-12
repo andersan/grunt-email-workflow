@@ -6,6 +6,7 @@ node_modules
 secrets.json
 dist/*
 preview/css
-src/css/*.css
+*.css
+*.scss
 src/img/*
 src/emails/*
