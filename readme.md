@@ -71,6 +71,9 @@ If you don't use or need these services **it's ok to leave these defaults**, but
     "password": "LITMUS PASS",
     "company": "LITMUS COMPANY/API SUBDOMAIN NAME"
   },
+  "tinify": {
+    "api-key": "TINYPNG API KEY"
+  },
   "cloudfiles": {
     "user": "CLOUDFILES USERNAME",
     "key": "CLOUDFILES KEY",
