@@ -5,10 +5,11 @@ var jpegrecompress = require('imagemin-jpeg-recompress');
 
 // Compress images
 module.exports = {
-  lossless: {
+  lossy: {
     options: {
       optimizationLevel: 3,
       svgoPlugins: [{ removeViewBox: false }],
+      use: [pngquant(), jpegrecompress()]
     },
     
     files: [{
@@ -18,11 +19,10 @@ module.exports = {
       dest: '<%= paths.dist_img %>'
     }]
   },
-  lossy: {
+  lossless: {
     options: {
       optimizationLevel: 3,
       svgoPlugins: [{ removeViewBox: false }],
-      use: [pngquant(), jpegrecompress()]
     },
     
     files: [{
