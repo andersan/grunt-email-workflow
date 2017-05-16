@@ -7,6 +7,7 @@ module.exports = function(grunt) {
 
       // Re-usable filesystem path variables
       paths: {
+        main:       '/',
         src:        'src',
         src_img:    'src/img',
         dist:       'dist',

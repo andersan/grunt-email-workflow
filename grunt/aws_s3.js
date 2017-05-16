@@ -1,4 +1,3 @@
-// Use Amazon S3 for images
 // grunt s3upload
 module.exports = {
   options: {
@@ -18,7 +17,7 @@ module.exports = {
       }
     },
     files: [
-      {expand: true, cwd: '<%= paths.dist_img %>', src: ['**'], dest: '<%= secrets.s3.bucketdir %>/<%= paths.dist_img %>'}
+      {expand: true, cwd: '<%= paths.dist_img %>', src: ['**'], dest: '<%= secrets.s3.bucketdir %>/<%= paths.main %>'}
     ]
   }
 };
