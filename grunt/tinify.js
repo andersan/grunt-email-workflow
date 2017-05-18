@@ -3,11 +3,11 @@
 module.exports = {
 	tinify: {
     options: {
-        key: '<%= secrets.tinify.key %>',
+        key: '<%= secrets.tinify.api_key %>'
     },
     files: {
-      src: '<%= paths.src_img %>/*.{png,jpg}',
+      src: ['<%= paths.src_img %>/*.png', '<%= paths.src_img %>/*.jpg'],
       dest: '<%= paths.dist_img %>'
     },
-  }
+  },
 };
