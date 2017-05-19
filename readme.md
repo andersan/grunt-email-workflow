@@ -14,9 +14,9 @@ This Grunt task helps simplify things.
 
 3. Inlines your CSS
 
-4. Compresses and uploads images to a CDN (optional)
+4. Compresses images (lossy or lossless compression) (optional)
 
-5. Sends a test email to your inbox or Litmus (optional)
+5. Uploads images to a AWS S3/CDN (optional)
 
 ## Requirements
 
@@ -25,8 +25,6 @@ You may already have these installed on your system. If not, you'll have to inst
 * Node.js - [Install Node.js](https://github.com/joyent/node/wiki/Installing-Node.js-via-package-manager)
 * Grunt-cli and Grunt (`npm install grunt-cli -g`)
 * [Mailgun](http://www.mailgun.com) (optional) - Sends the email
-* [Litmus](https://litmus.com) (optional) - Tests the email across all clients/browsers/devices
-* [Rackspace Cloud](http://www.rackspace.com/cloud/files/) (optional) - Uses Cloud Files as a CDN
 
 ## Getting started
 
@@ -38,7 +36,7 @@ Clone this repo, cd to the directory, run `npm install` to install the necessary
 
 ```sh
 git clone https://github.com/andersan/weplann-grunt-email-workflow.git
-cd grunt-email-workflow
+cd weplann-grunt-email-workflow
 npm install
 ```
 
@@ -46,15 +44,10 @@ npm install
 
 Create a `secrets.json` file in your project root as **outlined below under "[Sensitive Information](#sensitive-information)"**.
 
-#### 3. Run Grunt
-
-Run `grunt` in command line and check out your `/dist` folder to see your compiled and inlined email templates.
-
 ### Sensitive information
 We encourage you __not__ to store sensitive data in your git repository. If you must, please look into [git-encrypt](https://github.com/shadowhand/git-encrypt) or some other method of encrypting your configuration secrets.
 
-1. Create a file `secrets.json` in your project root.
-2. Paste the following sample code in `secrets.json` and enter the appropriate credentials for the services you want to connect with. 
+Paste the following sample code in `secrets.json` and enter the appropriate credentials for the services you want to connect with. 
 
 If you don't use or need these services **it's ok to leave these defaults**, but they should exist for this to work.
 
@@ -65,18 +58,6 @@ If you don't use or need these services **it's ok to leave these defaults**, but
     "domain": "YOURDOMAIN.COM",
     "sender": "E.G. POSTMASTER@YOURDOMAIN.COM",
     "recipient": "WHO YOU WANT TO SEND THE EMAIL TO"
-  },
-  "litmus": {
-    "username": "LITMUS USER NAME",
-    "password": "LITMUS PASS",
-    "company": "LITMUS COMPANY/API SUBDOMAIN NAME"
-  },
-  "cloudfiles": {
-    "user": "CLOUDFILES USERNAME",
-    "key": "CLOUDFILES KEY",
-    "region": "CLOUDFILES REGION E.G. ORD",
-    "container": "CLOUDFILES CONTAINER NAME",
-    "uri": "CLOUDFILES URI"
   },
   "s3": {
     "key": "AMAZON S3 KEY",
@@ -89,7 +70,10 @@ If you don't use or need these services **it's ok to leave these defaults**, but
 }
 ```
 
-After this you should be good to go. Run `grunt` and your email templates should appear automagically in a `/dist` folder.
+
+#### 3. Run Grunt
+
+After this you should be good to go. Run `grunt` and your compiled email templates should appear in a `/dist` folder.
 
 ## How it works
 
@@ -132,7 +116,6 @@ In Terminal/command-line, run `grunt`. This will:
 * Compile your SCSS to CSS
 * Generate your email layout and content
 * Inline your CSS
-* Compress your images
 
 See the output HTML in the `dist` folder. Open them and preview it the browser.
 
@@ -155,7 +138,8 @@ In terminal, run `grunt serve`.
 
 * Sign up for a [Mailgun](http://www.mailgun.com) account (it's free)
 * Insert your Mailgun API key, either in `Gruntfile.js` or `secrets.json`
-* Change the sender and recipient to your own email address (or whoever you want to send it to)
+* Change the sender and recipient to your own email address (or whoever you want to send it to) in secrets.json
+*** Note: for Email on Acid users, insert your account's test email here to send an email to EoA.
 
 Run `grunt send --template=TEMPLATE_NAME.html`. This will email out the template you specify.
 
@@ -163,40 +147,13 @@ Run `grunt send --template=TEMPLATE_NAME.html`. This will email out the template
 
 Change 'transaction.html' to the name of the email template you want to send.
 
-### How to test with Litmus
+### Image compression
 
-If you have a [Litmus](http://www.litmus.com) account and want to test the email in multiple clients/devices:
+To compress images, run either `grunt lossy-min` or `grunt lossless-min` depending on whether you want your image quality to decrease or not. Lossy compression will run for PNG and JPEG files and lossless compression works for PNG, JPEG and GIF files. Imagemin is the program used for these compressions (integrated with plugins for the specific file type and an imagemin grunt plugin).
 
-* Open up `Gruntfile.js` or `secrets.json`
-* Replace `username`, `password` and `yourcompany` under the Litmus task with your credentials
+### AWS S3 CDN and working with image assets
 
-Run `grunt litmus --template=TEMPLATE_NAME.html` to send the email to Litmus. This will create a new test using the `<title>` value of your template.
-
-[See the Litmus results](https://litmus.com/pub/eb33459/screenshots) for the simple transactional email template that is included.
-
-<img src="https://s3.amazonaws.com/f.cl.ly/items/1a1H0B1o3v160147100S/Image%202014-12-31%20at%2010.10.01%20AM.png" width=-"500">
-
-
-### CDN and working with image assets
-
-If your email contains images you'll want to serve them from a CDN. This Gruntfile has support for Rackspace Cloud Files ([pricing](http://www.rackspace.com/cloud/files/pricing/)) and AWS S3.
-
-<img src="http://i.imgur.com/oO5gfkZ.jpg" width="500">
-
-* Sign up for a Rackspace Cloud account (use the [Developer Discount](http://developer.rackspace.com/devtrial/) for $300 credit)
-* Create a new Cloud Files container
-* Open up `Gruntfile.js` or `secrets.json`
-* Change 'cloudfiles' settings to your settings (you can find your Rackspace API key under your account settings)
-* Make any other config changes as per [grunt-cloudfiles](https://github.com/rtgibbons/grunt-cloudfiles) instructions
-
-Run `grunt rsupload` to run the default tasks as well as upload any images to your CDN.
-
-Run `grunt rsupload send --template=branded.html` to send the email to yourself with the 'CDNified' images.
-
-
-### Using Amazon S3 for image assets
-
-Another option for serving images is to use Amazon S3. Basic service is free of charge. For more information on setting up an account, visit [Amazon](http://aws.amazon.com/s3/).
+If your email contains images you'll want to serve them from a CDN. This Gruntfile has support for Amazon S3. Basic service is free of charge. For more information on setting up an account, visit [Amazon](http://aws.amazon.com/s3/).
 
 The Gruntfile uses [grunt-aws-s3](https://github.com/MathieuLoutre/grunt-aws-s3).
 
@@ -222,7 +179,14 @@ Once your AWS account is setup, create a Bucket within S3. You will need to ensu
 }
 ```
 
-Run `grunt s3upload` to upload images to your S3 Bucket. This will also run a replace task to change image paths within the destination directory to use the new S3 path.
+Run `grunt s3upload` to upload images (jpg and png files) to your S3 Bucket. This will also run a replace task to change image paths within the destination directory to use the new S3 path.
+
+To configure the s3upload task, within the secrets.json file edit the path in the S3 Bucket you would like your files to go into, and include the URL prefix that your images need to have to be accessed (e.g. the Amazon CDN prefix).
+
+
+### Clear processed files
+
+To clear the dist/ directory of files, run `grunt clean`, which will delete all files in that directory.
 
 
 ### Sample email templates
@@ -236,6 +200,6 @@ I've added a few templates here to help you get started.
 ### More resources
 
 * For more transactional email templates check out [Mailgun's collection of templates](http://github.com/mailgun/transactional-email-templates)
-* [Things I've learned about sending email](http://www.leemunroe.com/sending-email-designers-developers/)
-* [Things I've learned about building HTML email templates](http://www.leemunroe.com/building-html-email/)
+* [Things Lee Munroe learned about sending email](http://www.leemunroe.com/sending-email-designers-developers/)
+* [Things Lee Munroe learned about building HTML email templates](http://www.leemunroe.com/building-html-email/)
 * Prefer Gulp? Daryll Doyle has created a [Gulp email creator](https://github.com/darylldoyle/Gulp-Email-Creator)
