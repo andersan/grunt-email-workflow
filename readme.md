@@ -139,7 +139,7 @@ In terminal, run `grunt serve`.
 * Sign up for a [Mailgun](http://www.mailgun.com) account (it's free)
 * Insert your Mailgun API key, either in `Gruntfile.js` or `secrets.json`
 * Change the sender and recipient to your own email address (or whoever you want to send it to) in secrets.json
-*** Note: for Email on Acid users, insert your account's test email here to send an email to EoA.
+* __NOTE:__ for Email on Acid users, insert your account's test email here to send an email to EoA.
 
 Run `grunt send --template=TEMPLATE_NAME.html`. This will email out the template you specify.
 
