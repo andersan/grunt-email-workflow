@@ -1,0 +1,453 @@
+/* Basics */
+body {
+	margin: 0 !important;
+	padding: 0;
+
+}
+table {
+	border-spacing: 0;
+	font-family: sans-serif;
+	color: $font-color;
+}
+td {
+	padding: 0;
+}
+img {
+	border: 0;
+}
+div[style*="margin: 16px 0"] { 
+	margin:0 !important;
+}
+.wrapper {
+	width: 100%;
+	table-layout: fixed;
+	-webkit-text-size-adjust: 100%;
+	-ms-text-size-adjust: 100%;
+	background-color: $grey;
+	padding-top: 60px;
+}
+.webkit {
+	max-width: $width;
+	margin: 0 auto;
+	background-color: #ffffff;
+}
+.outer {
+	Margin: 0;
+	width: 100%;
+	max-width: $width;
+}
+.inner {
+	padding: 0px 0px;
+}
+.contents {
+	width: 100%;
+}
+h1, h2, h3, p {
+	Margin: 0;
+}
+a {
+	color: #ee6a56;
+	text-decoration: underline;
+}
+.h1 {
+  font-size: 21px;
+  line-height: 28px;
+	font-weight: bold;
+	color: $primary-color;
+	text-transform: uppercase;
+}
+.h2 {
+	font-size: 18px;
+	color: $primary-color;
+}
+.h3 {
+	font-size: 16px;
+	color: #515151;
+}
+.link {
+	font-size: 12px;	
+	font-weight: bold;
+	color: $primary-color;
+	text-align: right;
+}
+
+/* One column layout */
+
+.one-column .contents {
+	text-align: left;
+}/*
+.one-column p {
+	Margin-bottom: 10px;
+}*/
+
+/*Two column layout -- modified to look like one large column*/
+.two-column {
+	text-align: center;
+	font-size: 0;
+}
+.two-column .column {
+	width: 100%;
+	max-width: 260px;
+	display: inline-block;
+	vertical-align: top;
+}
+.two-column .contents {
+	font-size: 14px;
+	text-align: left;
+}
+.two-column img {
+	width: 100%;
+	max-width: 260px;
+	height: auto;
+}
+
+/*Three column layout*/
+.three-column, .attributes {
+	text-align: center;
+	font-size: 0;
+	padding: 10px 0px 0px 0px;
+}
+.three-column .column, .attributes .one-column {
+	width: 100%;
+	max-width: 166px;
+	display: inline-block;
+	vertical-align: top;
+}
+.three-column img {
+	/*width: 100%;*/
+	max-width: 165px;
+	height: auto;
+}
+.three-column .contents, .attributes .contents {
+	font-size: 14px;
+	text-align: center;
+	padding: 10px 0 0 0;
+}
+.three-column .text, .attributes .text {
+	padding-top: 10px;
+}
+
+/* Left sidebar layout */
+.left-sidebar {
+	text-align: center;
+	font-size: 0;
+}
+.left-sidebar .column {
+	width: 100%;
+	display: inline-block;
+	vertical-align: middle;
+}
+.left-sidebar .left {
+	max-width: 100px;
+}
+.left-sidebar .right {
+	max-width: 500px;
+}
+.left-sidebar .img {
+	width: 100%;
+	max-width: 80px;
+	height: auto;
+}
+.left-sidebar .contents {
+	font-size: 14px;
+	text-align: center;
+}
+.left-sidebar a {
+	color: #85ab70;
+}
+
+/* Right sidebar layout */
+.right-sidebar {
+	text-align: center;
+	font-size: 0;
+}
+.right-sidebar .column {
+	width: 100%;
+	display: inline-block;
+	vertical-align: middle;
+}
+.right-sidebar .left {
+	max-width: 100px;
+}
+.right-sidebar .right {
+	max-width: 500px;
+}
+.right-sidebar .img {
+	width: 100%;
+	max-width: 80px;
+	height: auto;
+}
+.right-sidebar .contents {
+	font-size: 14px;
+	text-align: center;
+}
+.right-sidebar a {
+	color: #70bbd9;
+}
+
+/* WePlann additions */
+.column .inner {
+	background-color: $light-grey;
+}
+.column {
+	padding: 10px;
+}
+.one-column {
+	padding: 10px 30px;
+}
+.button {
+	padding: 5px 30px;
+	display: inline-block;
+	background-color: $orange;
+	box-shadow: 1px 1px 1px #bbbbbb;
+}
+.button a {
+	font-size: 14px;  
+	color: #FFFFFF; 
+	text-transform: uppercase; 
+	padding: 0px 15px; 
+	margin: 0px;
+	text-decoration: none;
+}
+
+.text {
+	padding: 15px 25px;
+}
+.full-width-image img {
+	width: 100%;
+	max-width: 100%;
+	height: auto;
+}
+.one-column .h3 {
+	padding: 15px;
+}
+.header-image {
+	padding: 15px 0px;
+	text-align: center !important;
+}
+.header {
+	padding: 20px 0px 0px 0px;
+	p {
+		font-size: 13px;
+		line-height: 18px;
+		color: #333333;
+	}
+	.text {
+	padding: 10px 0 0 0;
+	text-align: justify;
+		p {
+			padding: 0px;
+			Margin: 0px !important;
+		}
+	}
+}
+div.column.discount, td.discount {
+	padding: 0px 0px 0px 0px	 !important;
+	height: $discount-height;
+	max-width: 150px;
+	background-color: $orange !important;
+	color: #ffffff;
+}
+.percent {
+	font-size: 60px;
+}
+.discount-code {
+	padding: 0px 0px 0px 0px !important;
+	height: $discount-height;
+	width: 100%;
+	max-width: 280px;
+	td {
+		padding: 0px 0px 0px 30px;
+	}
+	h2 {
+		color: $orange;
+		font-size: 48px;
+		font-weight: bold;
+	}
+}
+.products .contents {
+	padding: 0 0 10px 0;
+}
+.products .h3{
+	padding: 14px;
+	line-height: 22px;
+	color: #111111;
+	height: 44px;
+	display: table-cell;
+	vertical-align: middle;
+}
+.products div {
+	display: inline-block;
+	vertical-align: middle;
+}
+.features {
+	padding: 0px 100px;
+	width: 100%;
+	max-width: 400px;
+	color: #ffffff;
+	background-color: $primary-color !important;
+	text-align: left;
+	img {
+		width: 60px !important;
+		height: 60px !important;
+		padding-right: 10px;
+	}
+	.column, div {
+		max-width: 180px !important;
+		display: inline-block;
+	}
+	td td {
+		height: 80px;
+		background-color: $primary-color !important;
+	}
+	p {
+		display: inline-block;
+		width: 100px;
+		text-align: left;
+		padding: 0px;
+		line-height: 20px;
+		margin: 0px;
+		color: #ffffff;
+	}
+}
+.press {
+	background-color: $light-grey;
+	padding: 10px;
+	img {
+		padding: 0px 8px;
+	}
+	tr:nth-child(2) > td {
+		padding: 0px 13px;
+	}
+}
+.social-media {
+	font-size: 11px; 
+	padding: 14px;
+	.text {
+		padding: 10px;
+	}
+	.call-to-action {
+		font-size: 14px;
+		color: #494949; 
+		padding-left: 15px;
+	}
+	a {color: $primary-color;}
+}
+.footer{	
+	color:#848484; 
+	font-size: 11px;
+	text-align: center;
+	padding: 7px 0px;
+}
+.bottom-header {
+	padding: 25px 0px 10px 0px;
+}
+
+/*Attributes styles*/
+
+.attributes img {
+	width: 80px !important;
+}
+.attributes .inner {
+	box-shadow: 1px 1px 1px #bbbbbb;
+}
+
+/*Media Queries*/
+@media screen and (max-width: 550px) {
+	.two-column .column,
+	.three-column .column {
+		max-width: 100% !important;
+	}
+	.two-column img {
+		max-width: 100% !important;
+	}
+	.three-column img {
+		max-width: 50% !important;
+	}
+	.outer, .webkit, .full-width-image img {
+		max-width: 100% !important;
+	}
+	.outer {
+		padding: 6% !important;
+	}
+	.header h1 {
+		text-align: left !important;
+	}
+	.social-media img {
+		width: 36px !important;
+		height: 36px !important;
+	}
+	.social-media .call-to-action {
+		font-size: 14px !important;
+		color: #494949 !important; 
+		display: block !important;
+		padding-top: 20px !important;	
+	}
+	.wrapper {
+		padding-top: 0px !important;
+	}
+	.inner {
+		padding: 0px !important;
+	}
+	.products .h3{
+		height: auto !important;
+	}
+	.products .contents * {
+		display: block !important;
+	}
+	.products .contents {
+		padding-bottom: 0px !important;
+	}
+	.features {
+		padding: 0px 10px !important; 
+		text-align: center !important;
+	}
+	.press td {
+		text-align: center !important;
+		display: block !important;
+	}
+	.press td img {
+			padding: 10px 5px 10px 0px !important;
+	}
+	.blog {
+		padding-top: 10px !important;
+		text-align: left !important;
+	}
+	.column, .one-column {
+		padding: 10px 0px !important;
+	}
+	.discount {
+		font-size: 24px !important;
+		display: inline-block !important;
+		max-width: 100% !important;
+		width: 100% !important;
+	}
+	div.column.discount, td.discount {
+		height: $discount-height;
+		max-width: 100% !important;
+	}
+	.inner .attributes, .attributes img {
+		padding-top: 10px !important;
+	}
+}
+
+@media screen and (min-width: 550px) and (max-width: 700px) {
+	.three-column .column {
+		max-width: 33% !important;
+		padding: 10px 0px !important;
+	}
+	.products .h3{
+		height: auto !important;
+	}
+	.features {
+		padding: 0px !important; 
+		text-align: center !important;
+	}
+	.blog {
+		padding-top: 10px !important;
+		text-align: left !important;
+	}
+	.column {
+		padding: 10px 0px !important;
+	}
+}
