@@ -9,3 +9,5 @@ src/img/*
 src/*.jpg
 src/*.png
 src/*.gif
+src/css/main.css
+src/css/scss/main.scss
