@@ -5,10 +5,16 @@ default:
   - 'assemble'
   - 'juice'
 
-# Compress images
-# $ grunt min
-min:
+# Compress images, significant change in appearance 
+# $ grunt lossy-min
+lossy-min:
   - 'imagemin:lossy'
+  - 'replace:src_images'
+
+# Compress images without a loss in quality
+# $ grunt lossless-min
+lossless-min:
+  - 'imagemin:lossless'
   - 'replace:src_images'
 
 # Clear modified files directory (dist)
@@ -27,7 +33,7 @@ s3upload:
   - 'default'
  # - 'imagemin'
   - 'replace:s3_images' #replace doesn't change links to the online links - still local... trying to make it put in the s3 link
-  - 'aws_s3:prod'
+  - 'aws_s3'
   - 'cdn:aws_s3'
 
 # Launch the express server and start watching
@@ -39,10 +45,3 @@ serve:
   - 'express'
   - 'open'
   - 'watch'
-
-# Upload images to your CDN on Rackspace Cloud Files
-# $ grunt rsupload
-rsupload:
-  - 'default'
-  - 'cloudfiles'
-  - 'cdn:cloudfiles'
