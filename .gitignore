@@ -6,7 +6,6 @@ secrets.json
 dist/*
 preview/css
 src/img/*
-src/emails/*
 src/*.jpg
 src/*.png
 src/*.gif
