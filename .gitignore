@@ -11,3 +11,4 @@ src/*.png
 src/*.gif
 src/css/main.css
 src/css/scss/main.scss
+*.html
