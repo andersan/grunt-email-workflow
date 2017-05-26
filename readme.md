@@ -14,9 +14,9 @@ This Grunt task helps simplify things.
 
 3. Inlines your CSS
 
-4. Compresses images (lossy or lossless compression) (optional)
+4. Compresses images (lossy or lossless compression)
 
-5. Uploads images to a AWS S3/CDN (optional)
+5. Uploads images to a AWS S3/CDN
 
 ## Requirements
 
