@@ -8,6 +8,7 @@ module.exports = {
     files: ['./dist/*'],
     tasks: [],
     options: {
+      nospawn: true,
       livereload: true
     }
   },
@@ -15,6 +16,7 @@ module.exports = {
     files: ['<%= paths.preview %>/scss/*'],
     tasks: ['sass:preview','autoprefixer:preview'],
     options: {
+      nospawn: true,
       livereload: true
     }
   }
