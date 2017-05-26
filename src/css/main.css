@@ -63,12 +63,12 @@ a {
 
 .h2 {
   font-size: 16px;
-  Margin-bottom: 10px;
+  padding-bottom: 10px;
   color: #1eaad6; }
 
 .h3 {
   font-size: 14px;
-  Margin-bottom: 11px;
+  padding-bottom: 11px;
   color: #515151; }
 
 .link {
@@ -110,7 +110,7 @@ a {
   text-align: left; }
 
 .one-column p {
-  Margin-bottom: 10px; }
+  padding-bottom: 10px; }
 
 /*Two column layout -- modified to look like one large column*/
 .two-column {
@@ -245,12 +245,18 @@ a {
     color: #494949 !important;
     display: block !important;
     padding-top: 20px !important; }
+  .social-media img {
+    width: 44px;
+    height: 44px; }
   .wrapper {
     padding-top: 0px !important; } }
 
 @media screen and (min-width: 550px) and (max-width: 700px) {
   .three-column .column {
     max-width: 33% !important; }
+  .social-media img {
+    width: 44px;
+    height: 44px; }
   /*.two-column .column {
 		max-width: 50% !important;
 	}*/ }
