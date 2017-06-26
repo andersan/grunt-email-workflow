@@ -1,6 +1,6 @@
 # Grunt Email Design Workflow
 
-Edited from Lee Munroe's workflow specifically for WePlann.com's html newsletter creation.
+Forked from Lee Munroe's workflow specifically for WePlann.com's html newsletter creation.
 
 [![Built with Grunt](https://cdn.gruntjs.com/builtwith.png)](http://gruntjs.com/) 
 
@@ -85,7 +85,7 @@ This project uses [SCSS](http://sass-lang.com/). You don't need to touch the .cs
 
 For changes to CSS, modify the `.scss` files.
 
-Media queries and responsive styles are in a separate style sheet so that they don't get inlined. Note that only a few clients support media queries e.g. iOS Mail app.
+Media queries and responsive styles are in a separate style sheet so that they don't get inlined. __Please include media queries in the head of the HTML NL.__ Many email clients (as of June 2017) will not display media queries, but the most popular ones (minus Outlook) will display media queries.  
 
 ### Email templates and content
 
@@ -149,7 +149,7 @@ Change 'transaction.html' to the name of the email template you want to send.
 
 ### Image compression
 
-To compress images, run either `grunt lossy-min` or `grunt lossless-min` depending on whether you want your image quality to decrease or not. Lossy compression will run for PNG and JPEG files and lossless compression works for PNG, JPEG and GIF files. Imagemin is the program used for these compressions (integrated with plugins for the specific file type and an imagemin grunt plugin).
+To compress images, run either `grunt lossy-min` or `grunt lossless-min` depending on whether you want your image quality to decrease or not. Lossy compression will run for PNG and JPEG files and lossless compression works for PNG, JPEG and GIF files. Imagemin is the program used for these compressions (integrated with node.js plugins for the specific file type and an imagemin grunt plugin).
 
 ### AWS S3 CDN and working with image assets
 
@@ -157,27 +157,7 @@ If your email contains images you'll want to serve them from a CDN. This Gruntfi
 
 The Gruntfile uses [grunt-aws-s3](https://github.com/MathieuLoutre/grunt-aws-s3).
 
-Once your AWS account is setup, create a Bucket within S3. You will need to ensure your Bucket has a policy setup under Permissions. Below is a very loose sample policy for testing purposes. You should read up on [AWS Identity and Access Management](http://aws.amazon.com/iam/) for more information.
-
-**Sample S3 Bucket Policy**
-
-```json
-{
-  "Version": "2008-10-17",
-  "Id": "Policy123",
-  "Statement": [
-    {
-      "Sid": "Stmt456",
-      "Effect": "Allow",
-      "Principal": {
-        "AWS": "*"
-      },
-      "Action": "s3:*",
-      "Resource": "arn:aws:s3:::BUCKETNAME"
-    }
-  ]
-}
-```
+Using S3, it is necessary to publicly serve files uploaded for email NLs. WePlann's main AWS S3 bucket (as of June 26, 2017) has a bucket policy in place that will publicly serve all files within the images folder. You should read up on [AWS Identity and Access Management](http://aws.amazon.com/iam/) for more information.
 
 Run `grunt s3upload` to upload images (jpg and png files) to your S3 Bucket. This will also run a replace task to change image paths within the destination directory to use the new S3 path.
 
@@ -186,7 +166,7 @@ To configure the s3upload task, within the secrets.json file edit the path in th
 
 ### Clear processed files
 
-To clear the dist/ directory of files, run `grunt clean`, which will delete all files in that directory.
+To DELETE ALL FILES in the dist/ directory, but preserve all other files in the folder (src/ files, etc), run `grunt clean`.
 
 
 ### Sample email templates
